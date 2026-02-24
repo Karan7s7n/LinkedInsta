@@ -13,7 +13,7 @@ export default function HeroPage() {
         transition={{ duration: 1, ease: "easeOut" }}
         className="relative z-10 text-center max-w-5xl"
       >
-        <h1 className="text-6xl md:text-8xl xl:text-9xl font-extrabold leading-[0.92] text-white">
+        <h1 className="text-5xl md:text-7xl xl:text-8xl font-extrabold leading-[0.92] text-white">
           AI That Shapes <br /> Your Digital Influence
         </h1>
 
