@@ -4,13 +4,11 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Home,
-  BarChart2,
   Folder,
   Layers,
   PieChart,
   Settings,
   MessageCircle,
-  ExternalLink,
   ChevronDown
 } from "lucide-react"
 

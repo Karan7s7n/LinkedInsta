@@ -1,8 +1,7 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 
-const cn = (...classes: any[]) => classes.filter(Boolean).join(" ")
 
 export interface GalleryItem {
   title: string
@@ -67,7 +66,7 @@ export default function CircularGallery({
 
   return (
     <div
-      className="relative w-full h-[600px] flex items-center justify-center"
+      className="relative w-full h-150 flex items-center justify-center"
       style={{ perspective: "2000px" }}
     >
       <div
@@ -83,7 +82,7 @@ export default function CircularGallery({
           return (
             <div
               key={i}
-              className="absolute w-[280px] h-[380px]"
+              className="absolute w-70 h-95"
               style={{
                 transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
                 left: "50%",
@@ -115,7 +114,7 @@ export default function CircularGallery({
                 />
 
                 {/* OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
                 {/* CONTENT */}
                 <div className="absolute bottom-0 p-5 text-white">
@@ -126,7 +125,7 @@ export default function CircularGallery({
                 {/* HOVER GLOW */}
                 <div className="
                   absolute inset-0 opacity-0 group-hover:opacity-100
-                  bg-gradient-to-br from-blue-500/20 to-purple-500/20
+                  bg-linear-to-br from-blue-500/20 to-purple-500/20
                   transition
                 " />
               </div>

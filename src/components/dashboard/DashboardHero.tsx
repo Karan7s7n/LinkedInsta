@@ -2,22 +2,22 @@
 
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { motion } from "framer-motion"
+import { easeInOut, motion } from "framer-motion"
 
 /* ===== Animated Text (No cn / alias issues) ===== */
 function AnimatedText({ text }: { text: string }) {
 
   const pathVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        duration: 1.5,
-        ease: "easeInOut",
-      },
-    },
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: easeInOut // ✅ FIX
+    }
   }
+}
 
   return (
     <div className="flex flex-col items-center justify-center gap-2">
@@ -30,7 +30,7 @@ function AnimatedText({ text }: { text: string }) {
             text-4xl md:text-6xl font-extrabold text-center
 
             text-transparent bg-clip-text
-            bg-gradient-to-r
+            bg-linear-to-r
             from-blue-500 via-violet-500 to-purple-500
             dark:from-white dark:via-blue-300 dark:to-purple-400
           "
@@ -97,7 +97,7 @@ export default function DashboardHero() {
         <div className="fixed inset-0 flex items-center justify-center backdrop-blur-xl z-50">
 
           <div className="
-            p-8 rounded-3xl w-[400px] text-center
+            p-8 rounded-3xl w-100 text-center
 
             bg-white/70 dark:bg-white/5
             backdrop-blur-2xl

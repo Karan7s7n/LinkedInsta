@@ -1,15 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useNavigate } from "react-router-dom"
+
+
+// ✅ Proper type added
+type Action = {
+  text: string
+  onClick: () => void
+  primary?: boolean
+}
 
 export default function HeroPage() {
+  const navigate = useNavigate()
 
-  const actions = [
+  const actions: Action[] = [
     {
       text: "Start Using AI",
-      onClick: () => navigate("/login")
+      onClick: () => navigate("/login"),
+      primary: true, // ✅ FIXED
     }
-    
   ]
 
   const stats = [
@@ -50,13 +60,13 @@ export default function HeroPage() {
                 font-extrabold leading-[0.92]
 
                 text-transparent bg-clip-text
-                bg-gradient-to-r from-white via-blue-200 to-white
+                bg-linear-to-r from-white via-blue-200 to-white
 
                 blur-[30px] opacity-60
                 pointer-events-none
               "
             >
-              <br/>AI That Shapes <br /> Your Digital Influence
+              <br />AI That Shapes <br /> Your Digital Influence
             </motion.h1>
 
             {/* Main Text */}
@@ -69,7 +79,7 @@ export default function HeroPage() {
                 font-extrabold leading-[0.92]
 
                 text-transparent bg-clip-text
-                bg-gradient-to-r
+                bg-linear-to-r
                 from-blue-900 via-blue-500 to-blue-900
                 dark:from-white dark:via-blue-300 dark:to-purple-400
               "
@@ -103,7 +113,7 @@ export default function HeroPage() {
                 className={`
                   px-6 py-3 rounded-full text-sm font-medium
 
-                  ${action.primary
+                  ${action.primary === true
                     ? "bg-black text-white dark:bg-white dark:text-black"
                     : "bg-white/60 dark:bg-white/5 text-black dark:text-white border border-white/20"}
 
@@ -144,7 +154,7 @@ export default function HeroPage() {
         </motion.div>
 
         {/* ===== RIGHT SIDE (IMAGE COLLAGE) ===== */}
-        <motion.div className="relative h-[400px] w-full">
+        <motion.div className="relative h-100 w-full">
 
           {/* Floating shapes */}
           <div className="absolute top-0 left-1/3 w-16 h-16 bg-blue-400/20 rounded-full blur-xl" />
