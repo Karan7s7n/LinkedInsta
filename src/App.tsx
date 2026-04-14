@@ -11,35 +11,48 @@ import About from "./pages/AboutPage"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Dashboard from "./pages/Dashboard"
+import ProtectedRoute from "./components/ProtectedRoute"
+import PortfolioBuildup from "./pages/PortfolioBuildup"
 
 export default function App() {
-  const isLoggedIn = false
-
   return (
-    <div className="relative min-h-screen overflow-x-hidden ">
-      
-      {/* 🌌 Global Persistent Background */}
+    <div className="relative min-h-screen overflow-x-hidden">
+
+      {/* 🌌 Background */}
       <SnowfallShaderBackground />
 
-      {/* 🧭 UI */}
       <div className="relative z-10 flex flex-col min-h-screen">
         
-        <Navbar isLoggedIn={isLoggedIn} />
+        <Navbar />
 
         <main className="flex-1">
           <Routes>
+
+            {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/features" element={<Features />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+
+            {/* Protected Dashboard */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Portfolio Builder (can also protect if needed) */}
+            <Route path="/PortfolioBuildup" element={<PortfolioBuildup />} />
+
           </Routes>
         </main>
 
         <Footer />
-
       </div>
     </div>
   )

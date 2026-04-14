@@ -1,1 +1,86 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@keyframes gradientFlow {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+
+}
+
+@keyframes gradientMove {
+
+0% {
+background-position: 0% 50%;
+}
+
+50% {
+background-position: 100% 50%;
+}
+
+100% {
+background-position: 0% 50%;
+}
+
+}
+
+.animate-gradient{
+background-size:300% 300%;
+animation: gradientMove 8s ease infinite;
+}
+
+.magnetic{
+transition: transform 0.25s ease;
+}
+.logo-glow{
+  position: relative;
+}
+
+.logo-glow::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:9999px;
+  background: radial-gradient(circle, rgba(99,102,241,0.6), transparent 70%);
+  filter: blur(10px);
+  opacity:0;
+  transition: opacity 0.35s ease;
+  z-index:-1;
+}
+
+.logo-glow:hover::after{
+  opacity:1;
+}
+
+/* button glow */
+
+.btn-glow{
+  position:relative;
+}
+
+.btn-glow::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border-radius:9999px;
+  background: radial-gradient(circle, rgba(168,85,247,0.5), transparent 70%);
+  filter: blur(8px);
+  opacity:0;
+  transition: opacity 0.3s ease;
+  z-index:-1;
+}
+
+.btn-glow:hover::after{
+  opacity:1;
+}
